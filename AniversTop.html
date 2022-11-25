@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,shrink-to-fit=no,minimal-ui"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>AniversTop</title>
+<!-- write your code here -->
+<style>
+  #animation_container, #_preload_div_ {
+	position:absolute;
+	margin:auto;
+	left:0;right:0;
+	top:0;bottom:0;
+  }
+  .preload_container{
+  	height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: scale(0.5);
+  }
+  #perTxt{
+  	text-align: center;
+    font-size: 4vh;
+  }
+
+	/* s: 2022-08-10 폰트 추가 */
+	/*fonts.css*/
+	@font-face {
+		font-family : "klavika"; /*font 이름*/
+  	/* font-style : "normal"; */ /* font 스타일 정의 (기울임, 일반) */
+ 		/* font-weight : 400; */ /* font 굵기 정의 */
+ 		/* 브라우저&디바이스 환경에 따른 font 파일 위치 정의 */
+
+ 		/* src: url('./fonts/webfont.eot'); */ /* IE9 Compat Modes */
+ 		src:
+			/* font 파일 명시 */
+			url('./fonts/klavika-medium.otf');
+			/* url('./fonts/klavika-medium-italic.otf');  */
+			/* url('./fonts/klavika-bold.otf');   */
+			/* url('./fonts/klavika-regular.otf');   */
+			/* url('webfont.eot?#iefix') format('embedded-opentype'), */ /* IE6-IE8 */
+ 			/* url('webfont.woff2') format('woff2'), */ /*  Modern Browsers */
+			/* url('webfont.woff') format('woff'), */ /* Modern Browsers */
+			/* url('webfont.ttf')  format('truetype'), */ /* Safari, Android, iOS */
+			/* url('webfont.svg#svgFontName') format('svg'); */ /* Legacy iOS */
+	}
+	/* e: 2022-08-10 폰트 추가 */
+</style>
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>  <!-- 2022-09-07: clipboard.js 추가 -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="AniversTop.js?1654755197537"></script>
+<script>
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, isMobile, loadCnt, totalLoadCnt;
+function init() {
+	isMobile=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	if(isMobile){
+		if(window.orientation==90||window.orientation==-90){
+			//landscape
+			//$('.preload_container').css('transform','scale(0.5)');
+		}else{
+			//portrait
+			//$('.preload_container').css('transform','scale(0.5)');
+		}
+	}
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("F43C019DB9A3D048819F0BB3CCA39F51");
+	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+	loadCnt=0;
+	totalLoadCnt=lib.properties.manifest.length;
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+	loadCnt++;
+	update(loadCnt/totalLoadCnt);
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	var preloaderDiv = document.getElementById("_preload_div_");
+	preloaderDiv.style.display = 'none';
+	canvas.style.display = 'block';
+	exportRoot = new lib.AniversTop();
+	stage = new lib.Stage(canvas);
+	stage.enableMouseOver();
+	createjs.Touch.enable(stage,false,true);
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.framerate = lib.properties.fps;
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+	//Code to support hidpi screens and responsive scaling.
+	if(isMobile){
+		if(window.orientation==90||window.orientation==-90){
+			//landscape
+			//AdobeAn.makeResponsive(true,'width',true,1,[canvas,anim_container,dom_overlay_container]);
+		}else{
+			//portrait
+			//AdobeAn.makeResponsive(true,'height',true,1,[canvas,anim_container,dom_overlay_container]);
+		}
+	}else{
+		AdobeAn.makeResponsive(false,'height',false,1,[canvas,anim_container,dom_overlay_container]);
+	}
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+function update(_per) {
+	document.getElementById('perTxt').innerHTML = parseInt(_per*100) + "%";
+}
+
+</script>
+<!-- write your code here -->
+</head>
+<body onload="init();" style="margin:0px;overflow: hidden;">
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:2200px; height:2400px;">
+		<canvas id="canvas" width="2200" height="2400" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:2200px; height:2400px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+	<div id='_preload_div_' style='position:absolute; top:0; left:0; display: inline-block; height:100%; width: 100%; text-align: center;background-color:white;overflow: hidden;'>
+		<div class='preload_container'>
+			<img src=images/_preloader.gif?1659178373588 id="preloaderImg" style='vertical-align: middle; max-height: 100%'/>
+			<p id="perTxt" class='perTxt' style="font-family: klavika;">0%</p> <!-- 2022-08-10 폰트 style 추가 -->
+		</div>
+	</div>
+
+	<!-- s: 2022-09-07: clipboard.js 클립보드로 복사하기 -->
+	<!-- Target -->
+	<input id="clipboard_foo" value="aniverse@aniverse.io" />
+
+	<!-- Trigger -->
+	<button id="clipboard_btn" data-clipboard-target="#clipboard_foo">
+		Copy to clipboard
+		<!-- <img src="assets/clippy.svg" alt="Copy to clipboard" /> -->
+	</button>
+
+	<script>
+		new ClipboardJS('#clipboard_btn')
+	</script>
+	<!-- e: 2022-09-07: clipboard.js 클립보드로 복사하기 -->
+
+</body>
+</html>

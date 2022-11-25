@@ -1,0 +1,57 @@
+﻿/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * klavika-web:
+ *   - http://typekit.com/eulas/00000000000000007735f512
+ *   - http://typekit.com/eulas/00000000000000007735f514
+ *   - http://typekit.com/eulas/00000000000000007735f518
+ *   - http://typekit.com/eulas/00000000000000007735f516
+ *   - http://typekit.com/eulas/00000000000000007735f511
+ *   - http://typekit.com/eulas/00000000000000007735f513
+ *
+ * © 2009-2022 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2022-06-29 02:18:25 UTC"}*/
+
+@import url("p.css");
+
+@font-face {
+font-family:"klavika-web";
+src:url("af/6d6523/00000000000000007735f512/30/l") format("woff2"),url("af/6d6523/00000000000000007735f512/30/d") format("woff"),url("af/6d6523/00000000000000007735f512/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"klavika-web";
+src:url("af/abc627/00000000000000007735f514/30/l") format("woff2"),url("af/abc627/00000000000000007735f514/30/d") format("woff"),url("af/abc627/00000000000000007735f514/30/a") format("opentype");
+font-display:auto;font-style:italic;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"klavika-web";
+src:url("af/1b92f6/00000000000000007735f518/30/l") format("woff2"),url("af/1b92f6/00000000000000007735f518/30/d") format("woff"),url("af/1b92f6/00000000000000007735f518/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+font-family:"klavika-web";
+src:url("af/0cc48f/00000000000000007735f516/30/l") format("woff2"),url("af/0cc48f/00000000000000007735f516/30/d") format("woff"),url("af/0cc48f/00000000000000007735f516/30/a") format("opentype");
+font-display:auto;font-style:italic;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+font-family:"klavika-web";
+src:url("af/5c30e2/00000000000000007735f511/30/l") format("woff2"),url("af/5c30e2/00000000000000007735f511/30/d") format("woff"),url("af/5c30e2/00000000000000007735f511/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"klavika-web";
+src:url("af/7fc796/00000000000000007735f513/30/l") format("woff2"),url("af/7fc796/00000000000000007735f513/30/d") format("woff"),url("af/7fc796/00000000000000007735f513/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:600;font-stretch:normal;
+}
+
+.tk-klavika-web { font-family: "klavika-web",sans-serif; }
