@@ -1,5 +1,9 @@
 //nav
 $(document).ready(function(){
+	isMobile=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	if(isMobile){
+		location.replace('https://m.aniverse.io');
+	}
 	$('.btnMenu').click(function() {
 		$('nav.gnb').slideToggle();
 	});

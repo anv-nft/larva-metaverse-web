@@ -125,17 +125,6 @@
 	<script>
 		var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, isMobile, loadCnt, totalLoadCnt;
 		function init() {
-			isMobile=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-			if(isMobile){
-				location.replace('https://m.aniverse.io');
-				// if(window.orientation==90||window.orientation==-90){
-				// 	landscape
-				// 	$('.preload_container').css('transform','scale(0.5)');
-				// }else{
-				// 	portrait
-				// 	$('.preload_container').css('transform','scale(0.5)');
-				// }
-			}
 			canvas = document.getElementById("canvas");
 			anim_container = document.getElementById("animation_container");
 			dom_overlay_container = document.getElementById("dom_overlay_container");
