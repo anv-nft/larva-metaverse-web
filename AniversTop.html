@@ -27,7 +27,7 @@
   	text-align: center;
     font-size: 4vh;
   }
-
+	
 	/* s: 2022-08-10 폰트 추가 */
 	/*fonts.css*/
 	@font-face {
@@ -35,11 +35,11 @@
   	/* font-style : "normal"; */ /* font 스타일 정의 (기울임, 일반) */
  		/* font-weight : 400; */ /* font 굵기 정의 */
  		/* 브라우저&디바이스 환경에 따른 font 파일 위치 정의 */
-
+		
  		/* src: url('./fonts/webfont.eot'); */ /* IE9 Compat Modes */
  		src:
 			/* font 파일 명시 */
-			url('./fonts/klavika-medium.otf');
+			url('./fonts/klavika-medium.otf');  
 			/* url('./fonts/klavika-medium-italic.otf');  */
 			/* url('./fonts/klavika-bold.otf');   */
 			/* url('./fonts/klavika-regular.otf');   */
@@ -82,8 +82,8 @@ function init() {
 	totalLoadCnt=lib.properties.manifest.length;
 }
 function handleFileLoad(evt, comp) {
-	var images=comp.getImages();
-	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+	var images=comp.getImages();	
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
 	loadCnt++;
 	update(loadCnt/totalLoadCnt);
 }
@@ -101,14 +101,14 @@ function handleComplete(evt,comp) {
 	canvas.style.display = 'block';
 	exportRoot = new lib.AniversTop();
 	stage = new lib.Stage(canvas);
-	stage.enableMouseOver();
+	stage.enableMouseOver();	
 	createjs.Touch.enable(stage,false,true);
 	//Registers the "tick" event listener.
 	fnStartAnimation = function() {
 		stage.addChild(exportRoot);
 		createjs.Ticker.framerate = lib.properties.fps;
 		createjs.Ticker.addEventListener("tick", stage);
-	}
+	}	    
 	//Code to support hidpi screens and responsive scaling.
 	if(isMobile){
 		if(window.orientation==90||window.orientation==-90){

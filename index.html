@@ -228,25 +228,25 @@
 		<!-- mainHeader -->
 		<header class="mainHeader">
 			<section>
-				<h1><a href="main.html" title="메인으로 이동"><img src="images/logo.svg" alt="ANIVERSE" class="img-responsive"></a></h1>
-				<a href="#self" class="btnMenu" title="전체 메뉴 보기"><i class="fa-solid fa-bars-sort"></i></a>
+				<h1><a href="index.html" title="메인으로 이동"><img src="images/logo.svg" alt="ANIVERSE" class="img-responsive"></a></h1>
+				<a href="javascript:void(0)" class="btnMenu" title="전체 메뉴 보기"><i class="fa-solid fa-bars-sort"></i></a>
 				<nav class="gnb">
 					<ul>
-						<li><a href="javascript:alert('Coming Soon')" title="NFT">NFT</a></li>
+						<li><a href="#NFT-gnb" rel="modal:open" title="NFT">NFT</a></li>
 						<li><a href="https://aniversenft.com" target="_blank" title="NFT MARKET">NFT MARKET</a></li>
 						<li><a href="javascript:alert('Coming Soon')" title="GOVERNANCE">GOVERNANCE</a></li>
 						<li><a href="https://swap.aniverse.io/" target="_blank" title="BRIDGE">BRIDGE</a></li>
 						<li><a href="https://www.youtube.com/c/LarvaTuba" target="_blank" title="MEDIA">MEDIA</a></li>
-						<li><a href="#supportModal" rel="modal:open" title="INFO">INFO</a></li>
+						<li><a href="#INFO-gnb" rel="modal:open" title="INFO">INFO</a></li>
 						<li><a href="https://aniverse.gitbook.io/whitepaper/" target="_blank" title="WHITE PAPER">WHITE PAPER</a></li>
 					</ul>
-					<!--<a href="#self" title="CONNECT WALLET" class="connect_btn connect_btn_m">CONNECT WALLET</a>-->
+					<!--<a href="javascript:void(0)" title="CONNECT WALLET" class="connect_btn connect_btn_m">CONNECT WALLET</a>-->
 					<div class="lang_btn_m_wrap">
 						<a href="javascript:void(0)" onclick="exportRoot.changeLang('US')" title="EN" class="lang_btn_m">EN</a>
 						<a href="javascript:void(0)" onclick="exportRoot.changeLang('KR')" title="KR" class="lang_btn_m">KR</a>
 					</div>
 				</nav>
-				<!--<div class="headerconnect"><a href="#self" title="CONNECT WALLET" class="connect_btn">CONNECT WALLET</a></div>-->
+				<!--<div class="headerconnect"><a href="javascript:void(0)" title="CONNECT WALLET" class="connect_btn">CONNECT WALLET</a></div>-->
 				<div class="headerconnect">
 					<a href="javascript:void(0)" onclick="exportRoot.changeLang('US')" title="EN" class="lang_btn">EN</a>
 					<a href="javascript:void(0)" onclick="exportRoot.changeLang('KR')" title="KR" class="lang_btn">KR</a>
@@ -302,7 +302,7 @@
 				<div class="footRight">
 					<p class="footRight_tit">CONTACT</p>
 					<ul class="contactList">
-						<li><a href="#supportModal" rel="modal:open"><span><i class="fa-solid fa-light-emergency-on"></i></span>Support</a></li>
+						<li><a href="#supportModal" rel="modal:open"><span><i class="fa-solid fa-envelope"></i></span>Contact us</a></li>
 						<li><a href="https://t.me/aniverse_official_worldwide" target="_blank"><span><i class="fa-brands fa-telegram"></i></span>Telegram</a></li>
 						<li><a href="https://www.youtube.com/channel/UCtNZrgrnw9qDIe38iFGL1Rg" target="_blank"><span><i class="fa-brands fa-youtube"></i></span>Youtube</a></li>
 						<li><a href="https://open.kakao.com/o/gCGOxhAc" target="_blank"><span><img src="images/kakao.svg" alt="Kakaotalk"></span>Kakaotalk</a></li>
@@ -320,8 +320,10 @@
 
 	<!-- exploreAniverse -->
 	<div id="supportModal" class="modal supportModalSt" style="max-width:350px">
-		<input type="text" id="copyMail" value="aniverse@aniverse.io">
-		<div class="text-center"><a href="javascript:void(0)" onclick="fn_copy()" class="copyBtn">copy</a></div>
+		<div class="inner">
+			<input type="text" id="copyMail" value="aniverse@aniverse.io">
+			<div class="text-center"><a href="javascript:void(0)" onclick="fn_copy()" class="copyBtn">copy</a></div>
+		</div>
 	</div>
 
 	<!-- exploreAniverse -->
@@ -344,9 +346,30 @@
 	</div>
 	<a href="javascript:void(0)" class="modalClose"><img src="./images/modalClose.png" alt="닫기"></a>
 	-->
-
-
 	<!-- //exploreAniverse -->
+
+	<!-- NFT -->
+	<div id="NFT-gnb" class="modal supportModalSt">
+		<div class="inner">
+			<div class="text-center">
+				<a href="https://larvanft.aniverse.io" target="_blank" class="gnbModalBtn">LARVA NFT</a>
+				<a href="https://larvakids.aniversenft.com" target="_blank" class="gnbModalBtn">LARVA KIDS NFT</a>
+			</div>
+		</div>
+	</div>
+	<!-- //NFT -->
+
+	<!-- INFO -->
+	<div id="INFO-gnb" class="modal supportModalSt" style="max-width:800px">
+		<div class="inner">
+			<div class="text-center">
+				<a href="https://linktr.ee/official_aniverse" target="_blank" class="gnbModalBtn">ANIVERSE LINKTREE</a>
+				<a href="https://linktr.ee/aniverse_larva" target="_blank" class="gnbModalBtn">LARVA NFT LINKTREE</a>
+				<a href="#supportModal" rel="modal:open" class="gnbModalBtn">CONTACT US</a>
+			</div>
+		</div>
+	</div>
+	<!-- //INFO -->
 
 	<script src="js/common.js"></script>
 	<script>
